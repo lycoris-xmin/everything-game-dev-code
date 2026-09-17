@@ -78,6 +78,22 @@ High-value skills: `unreal-project-structure`, `unreal-gameplay-framework`, `unr
 
 Files: `install-profile.example.json`, `docs/release-checklist.md`, `docs/technical-design-snapshot.md`, `README.md`
 
+---
+
+### xianxia-rpg/
+
+**Game:** 仙侠回合制 RPG — 2D回合制单机RPG，仙侠题材
+**Purpose:** Shows how to fill the GDD template with detailed game design content from an actual project. Demonstrates a complete game concept with 31 systems, 5 pillars, and detailed mechanics.
+
+Key characteristics:
+- Complete GDD filled with real design content (548-line game concept)
+- 5 game pillars with measurable design tests
+- 31 systems indexed with dependencies and priority tiers
+- Detailed combat system with action-value queue mechanics
+- Economy model with material-driven crafting
+
+Files: `game-design-document.md`, `README.md`
+
 ## How to use an example
 
 1. Read the example's `README.md` to confirm the project type matches your situation.

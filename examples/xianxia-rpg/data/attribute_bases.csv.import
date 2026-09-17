@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://b5eko5dc565lt"
+
+[deps]
+
+files=["res://data/attribute_bases.attack.translation", "res://data/attribute_bases.defense.translation", "res://data/attribute_bases.magic.translation", "res://data/attribute_bases.magic.translation", "res://data/attribute_bases.speed.translation", "res://data/attribute_bases.crit.translation", "res://data/attribute_bases.toughness.translation", "res://data/attribute_bases.accuracy.translation", "res://data/attribute_bases.evasion.translation", "res://data/attribute_bases.luck.translation", "res://data/attribute_bases.element.translation"]
+
+source_file="res://data/attribute_bases.csv"
+dest_files=["res://data/attribute_bases.attack.translation", "res://data/attribute_bases.defense.translation", "res://data/attribute_bases.magic.translation", "res://data/attribute_bases.magic.translation", "res://data/attribute_bases.speed.translation", "res://data/attribute_bases.crit.translation", "res://data/attribute_bases.toughness.translation", "res://data/attribute_bases.accuracy.translation", "res://data/attribute_bases.evasion.translation", "res://data/attribute_bases.luck.translation", "res://data/attribute_bases.element.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

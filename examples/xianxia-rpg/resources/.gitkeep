@@ -1,0 +1,2 @@
+# Godot 资源目录（.tres / .png / .ogg 等）。
+# 引用型配置用 Resource 放这里；数值型配置放 data/（CSV/JSON）。

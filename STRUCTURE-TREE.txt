@@ -604,6 +604,156 @@ everything-game-dev-code
 │   │   │   └── technical-design-snapshot.md
 │   │   ├── install-profile.example.json
 │   │   └── README.md
+│   ├── xianxia-rpg
+│   │   ├── assets
+│   │   │   ├── bg_world.png
+│   │   │   ├── bg_world.png.import
+│   │   │   ├── enemy_spider.png
+│   │   │   ├── enemy_spider.png.import
+│   │   │   ├── enemy_vine.png
+│   │   │   ├── enemy_vine.png.import
+│   │   │   ├── enemy_wolf.png
+│   │   │   ├── enemy_wolf.png.import
+│   │   │   ├── hero.png
+│   │   │   ├── hero.png.import
+│   │   │   ├── ic_atk.png
+│   │   │   ├── ic_atk.png.import
+│   │   │   ├── ic_skill.png
+│   │   │   ├── ic_skill.png.import
+│   │   │   ├── ic_ult.png
+│   │   │   ├── ic_ult.png.import
+│   │   │   ├── mat_wind.png
+│   │   │   ├── mat_wind.png.import
+│   │   │   ├── sword.png
+│   │   │   └── sword.png.import
+│   │   ├── data
+│   │   │   ├── .gitkeep
+│   │   │   ├── attribute_bases.accuracy.translation
+│   │   │   ├── attribute_bases.attack.translation
+│   │   │   ├── attribute_bases.crit.translation
+│   │   │   ├── attribute_bases.csv
+│   │   │   ├── attribute_bases.csv.import
+│   │   │   ├── attribute_bases.defense.translation
+│   │   │   ├── attribute_bases.element.translation
+│   │   │   ├── attribute_bases.evasion.translation
+│   │   │   ├── attribute_bases.luck.translation
+│   │   │   ├── attribute_bases.magic.translation
+│   │   │   ├── attribute_bases.speed.translation
+│   │   │   └── attribute_bases.toughness.translation
+│   │   ├── design
+│   │   │   └── gdd
+│   │   │       ├── .gitkeep
+│   │   │       └── attribute.md
+│   │   ├── resources
+│   │   │   └── .gitkeep
+│   │   ├── scenes
+│   │   │   └── Main.tscn
+│   │   ├── scripts
+│   │   │   ├── Autoloads
+│   │   │   │   ├── ConfigLoader.cs
+│   │   │   │   ├── ConfigLoader.cs.uid
+│   │   │   │   ├── EventBus.cs
+│   │   │   │   ├── EventBus.cs.uid
+│   │   │   │   ├── InputManager.cs
+│   │   │   │   ├── InputManager.cs.uid
+│   │   │   │   ├── PlatformService.cs
+│   │   │   │   ├── PlatformService.cs.uid
+│   │   │   │   ├── ProgressionState.cs
+│   │   │   │   ├── ProgressionState.cs.uid
+│   │   │   │   ├── SaveService.cs
+│   │   │   │   ├── SaveService.cs.uid
+│   │   │   │   ├── Telemetry.cs
+│   │   │   │   └── Telemetry.cs.uid
+│   │   │   ├── Game
+│   │   │   │   ├── BattleController.cs
+│   │   │   │   ├── BattleController.cs.uid
+│   │   │   │   ├── PartyPanel.cs
+│   │   │   │   ├── PartyPanel.cs.uid
+│   │   │   │   ├── TitleScreen.cs
+│   │   │   │   ├── TitleScreen.cs.uid
+│   │   │   │   ├── WorldController.cs
+│   │   │   │   └── WorldController.cs.uid
+│   │   │   ├── Systems
+│   │   │   │   ├── Battle
+│   │   │   │   │   ├── BattleEngine.cs
+│   │   │   │   │   ├── BattleEngine.cs.uid
+│   │   │   │   │   ├── BattleLog.cs
+│   │   │   │   │   ├── BattleLog.cs.uid
+│   │   │   │   │   ├── CombatAI.cs
+│   │   │   │   │   ├── CombatAI.cs.uid
+│   │   │   │   │   ├── DamageCalculator.cs
+│   │   │   │   │   ├── DamageCalculator.cs.uid
+│   │   │   │   │   ├── Skill.cs
+│   │   │   │   │   └── Skill.cs.uid
+│   │   │   │   ├── Core
+│   │   │   │   │   ├── Attributes.cs
+│   │   │   │   │   ├── Attributes.cs.uid
+│   │   │   │   │   ├── CsvParser.cs
+│   │   │   │   │   ├── CsvParser.cs.uid
+│   │   │   │   │   ├── FiveElements.cs
+│   │   │   │   │   └── FiveElements.cs.uid
+│   │   │   │   ├── Crafting
+│   │   │   │   │   ├── CraftingSystem.cs
+│   │   │   │   │   ├── CraftingSystem.cs.uid
+│   │   │   │   │   ├── Items.cs
+│   │   │   │   │   └── Items.cs.uid
+│   │   │   │   ├── Entities
+│   │   │   │   │   ├── Combatant.cs
+│   │   │   │   │   └── Combatant.cs.uid
+│   │   │   │   ├── Exploration
+│   │   │   │   │   ├── EncounterSystem.cs
+│   │   │   │   │   ├── EncounterSystem.cs.uid
+│   │   │   │   │   ├── Region.cs
+│   │   │   │   │   └── Region.cs.uid
+│   │   │   │   ├── Loot
+│   │   │   │   │   ├── DropSystem.cs
+│   │   │   │   │   └── DropSystem.cs.uid
+│   │   │   │   ├── Persistence
+│   │   │   │   │   ├── SaveData.cs
+│   │   │   │   │   ├── SaveData.cs.uid
+│   │   │   │   │   ├── SaveSystem.cs
+│   │   │   │   │   └── SaveSystem.cs.uid
+│   │   │   │   ├── Progression
+│   │   │   │   │   ├── LevelingSystem.cs
+│   │   │   │   │   └── LevelingSystem.cs.uid
+│   │   │   │   └── .gitkeep
+│   │   │   ├── UI
+│   │   │   │   ├── BarView.cs
+│   │   │   │   ├── BarView.cs.uid
+│   │   │   │   ├── DotView.cs
+│   │   │   │   ├── DotView.cs.uid
+│   │   │   │   ├── FloatLayer.cs
+│   │   │   │   ├── FloatLayer.cs.uid
+│   │   │   │   ├── PortraitView.cs
+│   │   │   │   ├── PortraitView.cs.uid
+│   │   │   │   ├── UiKit.cs
+│   │   │   │   └── UiKit.cs.uid
+│   │   │   ├── Main.cs
+│   │   │   └── Main.cs.uid
+│   │   ├── tests
+│   │   │   ├── .gitkeep
+│   │   │   ├── BattleTests.cs
+│   │   │   ├── BattleTests.cs.uid
+│   │   │   ├── ExplorationTests.cs
+│   │   │   ├── ExplorationTests.cs.uid
+│   │   │   ├── ProgressionTests.cs
+│   │   │   ├── ProgressionTests.cs.uid
+│   │   │   ├── SaveTests.cs
+│   │   │   ├── SaveTests.cs.uid
+│   │   │   ├── SystemsTests.cs
+│   │   │   └── SystemsTests.cs.uid
+│   │   ├── .gitignore
+│   │   ├── export_presets.cfg
+│   │   ├── game-design-document.md
+│   │   ├── icon.svg
+│   │   ├── icon.svg.import
+│   │   ├── install_godot_sdk_to_cache.ps1
+│   │   ├── nuget.config
+│   │   ├── PLAN.md
+│   │   ├── project.godot
+│   │   ├── README.md
+│   │   ├── SETUP.md
+│   │   └── TDD.md
 │   └── README.md
 ├── guides
 │   └── Dash & Collect

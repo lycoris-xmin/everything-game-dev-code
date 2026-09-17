@@ -1,0 +1,3 @@
+# 测试目录。
+# 策略（TDD §11）：纯逻辑用 NUnit（dotnet test headless），集成用 Godot 测试运行器 / GUT(C#)。
+# 框架选型为开放问题，M0 后定。

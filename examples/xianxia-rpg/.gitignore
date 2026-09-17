@@ -1,0 +1,18 @@
+# Godot 4 编辑器缓存（version-control 规则：不提交生成物）
+.godot/
+
+# Godot Mono / .NET（.csproj 由编辑器首次打开时自动生成，不提交）
+.mono/
+bin/
+obj/
+*.csproj
+*.sln
+*.user
+
+# 导出产物
+export/
+
+# OS / 本地
+Thumbs.db
+.DS_Store
+*.tmp

@@ -1,0 +1,3 @@
+# 纯 C# 逻辑层（不挂节点），待 M1 填充。
+# 计划：Battle/ (AvQueue, DamageCalculator, FiveElements)、Progression/ (CraftSystem, DropTable, LevelCurve)、Core/ (Attributes, ElementRing, Rng)
+# 这些模块不依赖 Godot 场景树，可用 NUnit headless 单元测试（见 TDD §11）。
