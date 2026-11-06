@@ -21,11 +21,15 @@ public partial class FloatLayer : Control
         foreach (var f in Items)
         {
             float t = f.Age / 1.1f;
-            Vector2 p = f.Start + new Vector2(0, -50f * t);
+            float pop = t < 0.18f ? Mathf.Lerp(1.7f, 1f, t / 0.18f) : 1f;
+            int fsize = (int)(34 * pop);
+            Vector2 p = f.Start + new Vector2(0, -56f * t);
             Color c = f.Col;
-            c.A = Mathf.Clamp(1f - t, 0f, 1f);
-            var size = font.GetStringSize(f.Text, HorizontalAlignment.Left, -1, 30);
-            DrawString(font, p - new Vector2(size.X / 2f, 0), f.Text, HorizontalAlignment.Left, -1, 30, c);
+            c.A = Mathf.Clamp(1f - t * t, 0f, 1f);
+            var size = font.GetStringSize(f.Text, HorizontalAlignment.Left, -1, fsize);
+            Vector2 basePos = p - new Vector2(size.X / 2f, 0);
+            DrawString(font, basePos + new Vector2(2, 2), f.Text, HorizontalAlignment.Left, -1, fsize, new Color(0, 0, 0, c.A * 0.5f));
+            DrawString(font, basePos, f.Text, HorizontalAlignment.Left, -1, fsize, c);
         }
     }
 }

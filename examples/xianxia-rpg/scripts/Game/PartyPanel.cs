@@ -22,7 +22,7 @@ public partial class PartyPanel : Control
         AnchorRight = 1; AnchorBottom = 1;
         var bg = new Panel();
         bg.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
-        bg.AddThemeStyleboxOverride("panel", UiKit.Panel(UiKit.BgPanel, 0));
+        bg.AddThemeStyleboxOverride("panel", UiKit.PanelPixel(UiKit.BgPanel, UiKit.BgPanelSoft));
         AddChild(bg);
         var pad = new MarginContainer();
         pad.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
@@ -53,7 +53,7 @@ public partial class PartyPanel : Control
         _craftBtns.AddThemeConstantOverride("separation", 8);
         vb.AddChild(_craftBtns);
 
-        var back = UiKit.MakeButton("返回世界（Esc）");
+        var back = UiKit.MakeButtonPixel("返回世界（Esc）");
         back.Pressed += () => Root.EnterWorld();
         vb.AddChild(back);
     }
@@ -83,7 +83,7 @@ public partial class PartyPanel : Control
         foreach (var r in Root.Prog.Recipes)
         {
             bool can = CraftingSystem.CanCraft(Root.Prog.Inv, r);
-            var btn = UiKit.MakeButton(
+            var btn = UiKit.MakeButtonPixel(
                 $"打造 {r.Name}（攻+{r.Bonus[AttrKey.Attack]}，需风精x{r.Cost["mat_wind"]}）",
                 UiKit.LoadTex("sword.png"), can ? UiKit.Gold : null);
             btn.Disabled = !can;

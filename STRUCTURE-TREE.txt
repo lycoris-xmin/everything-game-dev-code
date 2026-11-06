@@ -606,26 +606,38 @@ everything-game-dev-code
 │   │   └── README.md
 │   ├── xianxia-rpg
 │   │   ├── assets
+│   │   │   ├── pixel
+│   │   │   │   ├── battle_bg.png
+│   │   │   │   ├── bg_far.png
+│   │   │   │   ├── bg_mid.png
+│   │   │   │   ├── bg_near.png
+│   │   │   │   ├── bg_sky.png
+│   │   │   │   ├── boss.png
+│   │   │   │   ├── cursor.png
+│   │   │   │   ├── flower.png
+│   │   │   │   ├── house.png
+│   │   │   │   ├── motif_bagua.png
+│   │   │   │   ├── motif_cloud.png
+│   │   │   │   ├── motif_seal.png
+│   │   │   │   ├── rock.png
+│   │   │   │   ├── tile_grass.png
+│   │   │   │   ├── tile_path.png
+│   │   │   │   ├── tile_sand.png
+│   │   │   │   ├── tile_water.png
+│   │   │   │   ├── title_bg.png
+│   │   │   │   ├── tree.png
+│   │   │   │   └── world_back.png
 │   │   │   ├── bg_world.png
-│   │   │   ├── bg_world.png.import
+│   │   │   ├── boss.png
 │   │   │   ├── enemy_spider.png
-│   │   │   ├── enemy_spider.png.import
 │   │   │   ├── enemy_vine.png
-│   │   │   ├── enemy_vine.png.import
 │   │   │   ├── enemy_wolf.png
-│   │   │   ├── enemy_wolf.png.import
 │   │   │   ├── hero.png
-│   │   │   ├── hero.png.import
 │   │   │   ├── ic_atk.png
-│   │   │   ├── ic_atk.png.import
 │   │   │   ├── ic_skill.png
-│   │   │   ├── ic_skill.png.import
 │   │   │   ├── ic_ult.png
-│   │   │   ├── ic_ult.png.import
 │   │   │   ├── mat_wind.png
-│   │   │   ├── mat_wind.png.import
-│   │   │   ├── sword.png
-│   │   │   └── sword.png.import
+│   │   │   └── sword.png
 │   │   ├── data
 │   │   │   ├── .gitkeep
 │   │   │   ├── attribute_bases.accuracy.translation
@@ -671,6 +683,8 @@ everything-game-dev-code
 │   │   │   │   ├── PartyPanel.cs.uid
 │   │   │   │   ├── TitleScreen.cs
 │   │   │   │   ├── TitleScreen.cs.uid
+│   │   │   │   ├── World2D.cs
+│   │   │   │   ├── World3D.cs.uid
 │   │   │   │   ├── WorldController.cs
 │   │   │   │   └── WorldController.cs.uid
 │   │   │   ├── Systems
@@ -742,6 +756,8 @@ everything-game-dev-code
 │   │   │   ├── SaveTests.cs.uid
 │   │   │   ├── SystemsTests.cs
 │   │   │   └── SystemsTests.cs.uid
+│   │   ├── tools
+│   │   │   └── gen_pixel_art.py
 │   │   ├── .gitignore
 │   │   ├── export_presets.cfg
 │   │   ├── game-design-document.md

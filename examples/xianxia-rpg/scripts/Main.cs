@@ -11,7 +11,7 @@ public partial class Main : Node2D
 {
     public ProgressionState Prog;
     public TitleScreen Title;
-    public WorldController World;
+    public World2D World;
     public BattleController Battle;
     public PartyPanel Party;
 
@@ -19,13 +19,13 @@ public partial class Main : Node2D
     {
         Prog = GetNode<ProgressionState>("/root/ProgressionState");
         var save = GetNode<SaveService>("/root/SaveService");
-        if (!save.Load())
-            GD.Print("[Main] 无存档，使用默认进度");
+        bool loaded = save.Load();
+        if (!loaded) GD.Print("[Main] 无存档，使用默认进度");
 
-        World = new WorldController { Root = this };
+        World = new World2D { Root = this };
         Battle = new BattleController { Root = this };
         Party = new PartyPanel { Root = this };
-        Title = new TitleScreen { Root = this };
+        Title = new TitleScreen { Root = this, HasSave = loaded };
         AddChild(World);
         AddChild(Battle);
         AddChild(Party);
@@ -55,6 +55,7 @@ public partial class Main : Node2D
         Title.Visible = false;
         Battle.Visible = false;
         Party.Visible = false;
+        World.Refresh();
         World.Visible = true;
     }
 

@@ -29,15 +29,20 @@ public partial class ProgressionState : Node
 
 	void InitDefault()
 	{
+		Party.Clear();
+		Inv = new Inventory();
+		Level = new LevelingSystem();
+		ClearedSpots.Clear();
+		Recipes.Clear();
 		var hero = new Combatant { Name = "云无月", Element = Element.Wind, MaxHp = 200, Hp = 200, MaxMp = 100, Mp = 100, MaxToughness = 100, Toughness = 100 };
 		hero.Attr[AttrKey.Attack] = 30;
 		hero.Attr[AttrKey.MagicPower] = 25;
 		hero.Attr[AttrKey.Defense] = 20;
 		hero.Attr[AttrKey.MagicResist] = 18;
 		hero.Attr[AttrKey.Speed] = 28;
-		hero.AddSkill(new Skill { Id = "atk", Name = "普攻", Kind = SkillKind.Attack, MpCost = 0, Power = 20, Element = Element.Wind });
-		hero.AddSkill(new Skill { Id = "art", Name = "御风术", Kind = SkillKind.Attack, MpCost = 20, Power = 36, Element = Element.Wind });
-		hero.AddSkill(new Skill { Id = "ult", Name = "风云斩", Kind = SkillKind.Ultimate, MpCost = 0, Power = 50, Element = Element.Wind });
+		hero.AddSkill(new Skill { Id = "atk", Name = "普攻", Description = "挥剑直击敌方弱点", Kind = SkillKind.Attack, MpCost = 0, Power = 20, Element = Element.Wind });
+		hero.AddSkill(new Skill { Id = "art", Name = "御风术", Description = "借风灵之力造成多段伤害", Kind = SkillKind.Attack, MpCost = 20, Power = 36, Element = Element.Wind });
+		hero.AddSkill(new Skill { Id = "ult", Name = "风云斩", Description = "凝聚风云之力，破韧终结一击", Kind = SkillKind.Ultimate, MpCost = 0, Power = 50, Element = Element.Wind });
 		Party.Add(hero);
 
 		Level = new LevelingSystem();
@@ -48,6 +53,9 @@ public partial class ProgressionState : Node
 		sword.Bonus[AttrKey.Attack] = 10;
 		Recipes.Add(sword);
 	}
+
+	/// <summary>重新开始：重置为默认进度（覆盖读档态）。</summary>
+	public void ResetProgress() => InitDefault();
 
 	/// <summary>构造默认区域（含遭遇点与敌人）。读档后用它重建区域定义，再叠加已清进度。</summary>
 	public Region BuildRegion()

@@ -63,6 +63,88 @@ public static class UiKit
         return b;
     }
 
+    /// <summary>像素风面板：直角硬边 + 细描边（无圆角），贴合像素美术。</summary>
+    public static StyleBoxFlat PanelPixel(Color fill, Color? border = null)
+    {
+        var s = new StyleBoxFlat
+        {
+            BgColor = fill,
+            CornerRadiusTopLeft = 0, CornerRadiusTopRight = 0, CornerRadiusBottomLeft = 0, CornerRadiusBottomRight = 0,
+            ContentMarginLeft = 12, ContentMarginRight = 12, ContentMarginTop = 10, ContentMarginBottom = 10,
+        };
+        if (border.HasValue) { s.BorderColor = border.Value; s.SetBorderWidthAll(2); }
+        return s;
+    }
+
+    /// <summary>像素风按钮：直角硬描边，hover 用玉青、按下用金。</summary>
+    public static Button MakeButtonPixel(string text, Texture2D icon = null, Color? accent = null)
+    {
+        var b = new Button { Text = text };
+        if (icon != null) b.Icon = icon;
+        b.AddThemeFontSizeOverride("font_size", 18);
+        b.AddThemeColorOverride("font_color", TextCol);
+        var a = accent ?? BgPanelSoft;
+        b.AddThemeStyleboxOverride("normal", PanelPixel(a, a));
+        b.AddThemeStyleboxOverride("hover", PanelPixel(Jade, Gold));
+        b.AddThemeStyleboxOverride("pressed", PanelPixel(Gold, Gold));
+        b.AddThemeStyleboxOverride("disabled", PanelPixel(new Color(0.18f, 0.22f, 0.28f, 1), TextDim));
+        return b;
+    }
+
+    /// <summary>堆叠视差背景层（远→近），用于国风 HD-2D 分层山水。按传入顺序叠放（后者在上）。</summary>
+    public static void StackBg(Control host, params string[] layers)
+    {
+        foreach (var f in layers)
+        {
+            var tr = new TextureRect
+            {
+                Texture = LoadTex(f),
+                ExpandMode = TextureRect.ExpandModeEnum.FitWidth,
+                StretchMode = TextureRect.StretchModeEnum.KeepAspectCovered,
+            };
+            tr.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
+            tr.MouseFilter = Control.MouseFilterEnum.Ignore;
+            host.AddChild(tr);
+        }
+    }
+
+    /// <summary>程序化仙侠风水墨背景：暮色渐变天 + 落月 + 远/近山峦 + 雾带 + 地面。供战斗与标题共用。</summary>
+    public static void DrawInkBackdrop(Control ci)
+    {
+        float w = ci.Size.X, h = ci.Size.Y;
+        var skyTop = new Color(0.13f, 0.15f, 0.24f);
+        var skyBot = new Color(0.30f, 0.20f, 0.18f);
+        const int bands = 48;
+        for (int i = 0; i < bands; i++)
+        {
+            float t = i / (float)bands;
+            var col = skyTop.Lerp(skyBot, t);
+            ci.DrawRect(new Rect2(0, h * i / bands, w, h / bands + 1), col, true);
+        }
+        ci.DrawCircle(new Vector2(w * 0.82f, h * 0.2f), Mathf.Min(w, h) * 0.06f, new Color(0.92f, 0.9f, 0.82f, 0.85f));
+        ci.DrawColoredPolygon(new[]
+        {
+            new Vector2(0, h), new Vector2(0, h * 0.58f), new Vector2(w * 0.25f, h * 0.38f),
+            new Vector2(w * 0.5f, h * 0.52f), new Vector2(w * 0.75f, h * 0.34f), new Vector2(w, h * 0.5f), new Vector2(w, h),
+        }, new Color(0.22f, 0.24f, 0.32f, 0.9f));
+        ci.DrawRect(new Rect2(0, h * 0.5f, w, h * 0.12f), new Color(0.85f, 0.85f, 0.9f, 0.12f), true);
+        ci.DrawColoredPolygon(new[]
+        {
+            new Vector2(0, h), new Vector2(0, h * 0.74f), new Vector2(w * 0.3f, h * 0.54f),
+            new Vector2(w * 0.55f, h * 0.7f), new Vector2(w * 0.8f, h * 0.54f), new Vector2(w, h * 0.68f), new Vector2(w, h),
+        }, new Color(0.10f, 0.12f, 0.17f, 0.95f));
+        var gTop = new Color(0.10f, 0.12f, 0.17f);
+        var gBot = new Color(0.05f, 0.06f, 0.08f);
+        const int gb = 24;
+        for (int i = 0; i < gb; i++)
+        {
+            float t = i / (float)gb;
+            var col = gTop.Lerp(gBot, t);
+            float y = h * 0.8f + (h * 0.2f) * i / gb;
+            ci.DrawRect(new Rect2(0, y, w, h * 0.2f / gb + 1), col, true);
+        }
+    }
+
     /// <summary>无位图时的程序化立绘回退（圆形身躯 + 头 + 剑）。</summary>
     public static void DrawPortrait(CanvasItem ci, Vector2 c, float r, Color robe, string name)
     {

@@ -1,5 +1,6 @@
 using Godot;
 using System.Linq;
+using XianxiaRPG.Systems.Battle;
 using XianxiaRPG.Systems.Core;
 using XianxiaRPG.Systems.Crafting;
 using XianxiaRPG.Systems.Entities;
@@ -64,6 +65,9 @@ public partial class SaveService : Node
 		{
 			var c = new Combatant { Name = cs.Name, Element = cs.Element, MaxHp = cs.MaxHp, Hp = cs.Hp, MaxMp = cs.MaxMp, Mp = cs.Mp, MaxToughness = 100, Toughness = 100 };
 			for (int i = 0; i < AttributeSet.Count; i++) c.Attr[(AttrKey)i] = cs.Attr[i];
+			c.AddSkill(new Skill { Id = "atk", Name = "普攻", Description = "挥剑直击敌方弱点", Kind = SkillKind.Attack, MpCost = 0, Power = 20, Element = Element.Wind });
+			c.AddSkill(new Skill { Id = "art", Name = "御风术", Description = "借风灵之力造成多段伤害", Kind = SkillKind.Attack, MpCost = 20, Power = 36, Element = Element.Wind });
+			c.AddSkill(new Skill { Id = "ult", Name = "风云斩", Description = "凝聚风云之力，破韧终结一击", Kind = SkillKind.Ultimate, MpCost = 0, Power = 50, Element = Element.Wind });
 			p.Party.Add(c);
 		}
 		p.Level.Level = data.Characters.FirstOrDefault()?.Level ?? 1;
@@ -81,5 +85,15 @@ public partial class SaveService : Node
 		p.ClearedSpots = new System.Collections.Generic.HashSet<int>(data.ClearedSpots);
 		GD.Print("[Save] 已读档");
 		return true;
+	}
+
+	public void DeleteSave()
+	{
+		if (FileAccess.FileExists("user://save.json"))
+		{
+			var dir = DirAccess.Open("user://");
+			dir?.Remove("save.json");
+			GD.Print("[Save] 已删除旧存档");
+		}
 	}
 }

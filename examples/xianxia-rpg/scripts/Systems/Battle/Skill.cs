@@ -17,6 +17,7 @@ public class Skill
 {
     public string Id = "";
     public string Name = "";
+    public string Description = "";
     public Element Element;
     public int Power;   // 传给 DamageCalculator 的 skillPower 基数
     public int MpCost;  // 气力消耗
